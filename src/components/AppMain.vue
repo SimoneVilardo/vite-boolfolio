@@ -1,8 +1,12 @@
 <script>
+import AppLoader from './AppLoader.vue';
 import axios from 'axios';
 
 export default{
     name: 'AppMain',
+    components:{
+        AppLoader
+    },
     data(){
         return{
             baseUrl: 'http://localhost:8000',
@@ -31,12 +35,33 @@ export default{
   <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center"></h1>
+            <h1 class="text-center">BOOLFOLIO</h1>
+        </div>
+    </div>
+  </div>
+  <AppLoader v-if="loading" />
+  <div v-else class="container">
+    <div class="row">
+        <div class="col-12" v-for="project in projects" :key="project.id">
+            <div class="card">
+                <div class="card-title">
+                    {{ project.title }}
+                </div>
+                <div class="card-image-top">
+                    <img :src="`${baseUrl}/storage/${project.image}`" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    {{ project.content }}
+                </div>
+                <div class="card-footer">
+                    <a href="" class="btn btn-sm btn-primary"> Leggi il progetto</a>
+                </div>
+            </div>
         </div>
     </div>
   </div>
 </template>
 
-<style>
+<style lang="scss">
 
 </style>
