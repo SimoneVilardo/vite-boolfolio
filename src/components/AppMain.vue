@@ -5,7 +5,7 @@ export default{
 </script>
 
 <template>
-  ciao
+  ciao vite
 </template>
 
 <style>
