@@ -11,7 +11,8 @@ export default{
         return{
             baseUrl: 'http://localhost:8000',
             projects: [],
-            loading: true
+            loading: true,
+            maxNumCharacters: 60
         }
     },
     created(){
@@ -25,7 +26,17 @@ export default{
                     this.projects = response.data.results;
                     this.loading = false;
                 }
+                else{
+                    
+                }
             })
+        },
+        truncateText(text){
+            if(text.length > this.maxNumCharacters){
+                return text.substr(0,this.maxNumCharacters) + '...';
+            }
+
+            return text;
         }
     }
 }
@@ -42,8 +53,8 @@ export default{
   <AppLoader v-if="loading" />
   <div v-else class="container">
     <div class="row">
-        <div class="col-12" v-for="project in projects" :key="project.id">
-            <div class="card">
+        <div class="col-12 col-md-4" v-for="project in projects" :key="project.id">
+            <div class="card my-3 min-height-200px">
                 <div class="card-title">
                     {{ project.title }}
                 </div>
@@ -51,7 +62,7 @@ export default{
                     <img :src="`${baseUrl}/storage/${project.image}`" class="img-fluid">
                 </div>
                 <div class="card-body">
-                    {{ project.content }}
+                    {{ truncateText(project.content) }}
                 </div>
                 <div class="card-footer">
                     <a href="" class="btn btn-sm btn-primary"> Leggi il progetto</a>
@@ -63,5 +74,7 @@ export default{
 </template>
 
 <style lang="scss">
-
+    .min-height-200px{
+        height:200px;
+    }
 </style>
