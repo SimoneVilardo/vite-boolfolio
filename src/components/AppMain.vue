@@ -62,7 +62,16 @@ export default{
                     <img :src="`${baseUrl}/storage/${project.image}`" class="img-fluid">
                 </div>
                 <div class="card-body">
-                    {{ truncateText(project.content) }}
+                    <p>
+                        <span v-if="project.type"><strong>{{ project.type.name }}</strong></span>
+                        <span v-else><strong>Tipo non assegnato</strong></span>
+                    </p>
+                    <p v-if="project.technologies">
+                        <span class="badge text-bg-primary me-3" v-for="technology in project.technologies" :key="technology.id">
+                            {{ technology.name }}
+                        </span>
+                    </p>
+                    <p>{{ truncateText(project.content) }}</p>
                 </div>
                 <div class="card-footer">
                     <a href="" class="btn btn-sm btn-primary"> Leggi il progetto</a>
