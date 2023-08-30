@@ -79,7 +79,7 @@ export default{
         </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container mt-5">
     <div class="row">
         <div class="col-12">
             <nav class="d-flex justify-content-center">
