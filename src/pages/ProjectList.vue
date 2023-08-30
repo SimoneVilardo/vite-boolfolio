@@ -1,6 +1,7 @@
 <script>
 import AppLoader from '../components/AppLoader.vue';
 import axios from 'axios';
+import { store } from '../store.js';
 
 export default{
     name: 'ProjectList',
@@ -9,9 +10,8 @@ export default{
     },
     data(){
         return{
-            baseUrl: 'http://localhost:8000',
+            store,
             projects: [],
-            loading: true,
             maxNumCharacters: 60,
             currentPage: 1,
             lastPage: null
@@ -22,12 +22,12 @@ export default{
     },
     methods:{
         getProjects(num_page){
-            this.loading = true;
-            axios.get(`${this.baseUrl}/api/projects`, { params: { page:num_page }}).then((response) => {
+            this.store.loading = true;
+            axios.get(`${this.store.baseUrl}/api/projects`, { params: { page:num_page }}).then((response) => {
             this.projects = response.data.results.data;
             this.currentPage = response.data.results.current_page;
             this.lastPage = response.data.results.last_page;
-            this.loading = false;
+            this.store.loading = false;
         })},
 
         truncateText(text){
@@ -49,13 +49,13 @@ export default{
         </div>
     </div>
   </div>
-  <AppLoader v-if="loading" />
+  <AppLoader v-if="store.loading" />
   <div v-else class="container">
     <div class="row">
         <div class="col-12 col-md-4" v-for="project in projects" :key="project.id">
             <div class="card my-3 min-height-200px">
                 <div class="card-image-top">
-                    <img :src="`${baseUrl}/storage/${project.image}`" class="img-fluid">
+                    <img :src="`${this.store.baseUrl}/storage/${project.image}`" class="img-fluid">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
