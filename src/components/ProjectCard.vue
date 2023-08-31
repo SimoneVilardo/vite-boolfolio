@@ -1,5 +1,5 @@
 <script>
-import { store } from '../store.js'
+import { store } from '../store.js';
 export default {
     name:"ProjectCard",
     props: {
@@ -43,7 +43,7 @@ export default {
                 <p>{{ truncateText(project.content) }}</p>
             </div>
             <div class="card-footer">
-                <a href="#" class="btn btn-sm btn-primary"> Leggi il progetto</a>
+                <router-link class="btn btn-sm btn-primary" :to="{ name: 'single-project', params: { slug: project.slug }}">Leggi il progetto</router-link>
             </div>
         </div>
 </template>
