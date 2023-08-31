@@ -39,9 +39,25 @@ export default {
         <AppLoader v-if="store.loading" />
         <div v-else>
             <div class="container">
-                <div class="row">
+                <div class="row my-5">
                     <div class="col-12">
                         <h1 class="text-center">{{ project.title }}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <img :src="`${store.baseUrl}/storage/${project.image}`" width="300" />
+                    </div>
+                    <div class="col-12" v-if="project.type">
+                        <strong>Tipo:</strong> {{ project.type.name }}
+                    </div>
+                    <div class="col-12" v-if="project.technologies">
+                        <span class="badge rounded-pill text-bg-primary me-2" v-for="technology in project.technologies">{{ technology.name }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p>{{ project.content }}</p>
                     </div>
                 </div>
             </div>
