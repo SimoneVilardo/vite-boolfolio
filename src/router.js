@@ -5,6 +5,7 @@ import ProjectList from './pages/ProjectList.vue';
 import SingleProject from './pages/SingleProject.vue';
 import NotFound from './pages/NotFound.vue';
 import ContactUs from './pages/ContactUs.vue';
+import ThankYou from './pages/ThankYou.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -20,6 +21,16 @@ const router = createRouter({
             component: ProjectList
         },
         {
+            path: '/contact-us',
+            name: 'contact-us',
+            component: ContactUs
+        },
+        // {
+        //     path: '/thank-you',
+        //     name: 'thank-you',
+        //     component: ThankYou
+        // },
+        {
             path: '/projects/:slug',
             name: 'single-project',
             component: SingleProject
@@ -32,12 +43,7 @@ const router = createRouter({
         {
             path: '/:catchAll(.*)',
             redirect: '/pagina-non-trovata',
-        },
-        {
-            path: '/contact-us',
-            name: 'contact-us',
-            component: ContactUs
-        },
+        }
     ]
 });
 
