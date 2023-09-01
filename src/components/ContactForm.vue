@@ -39,6 +39,8 @@ export default {
                     this.name = '';
                     this.email = '';
                     this.message = '';
+
+                    this.$router.push({ name: 'thank-you' })
                 }
                 this.loading = false
             })
@@ -54,11 +56,11 @@ export default {
                 <div class="col-12">
                     <h2 class="text-center">Contatti</h2>
                 </div>
-                <div v-if="success" class="col-12">
+                <!-- <div v-if="success" class="col-12">
                     <div class="alert alert-success">
                         Messaggio inviato con successo
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col-12">

@@ -25,11 +25,11 @@ const router = createRouter({
             name: 'contact-us',
             component: ContactUs
         },
-        // {
-        //     path: '/thank-you',
-        //     name: 'thank-you',
-        //     component: ThankYou
-        // },
+        {
+            path: '/thank-you',
+            name: 'thank-you',
+            component: ThankYou
+        },
         {
             path: '/projects/:slug',
             name: 'single-project',
