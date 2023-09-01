@@ -20,6 +20,7 @@ export default {
                 },
                 {
                     label: 'Contatti',
+                    routeName: 'contact-us'
                 },
             ]
         }

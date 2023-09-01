@@ -76,7 +76,7 @@ export default {
                                     {{ error }}
                                 </p>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 my-5">
                                 <button class="btn btn-sm btn-success" type="submit" :disabled="loading">{{ loading ? 'Invio email in corso' : 'Invia' }}</button>
                             </div>
                         </form>
